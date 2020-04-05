@@ -1,0 +1,35 @@
+/* INITIALIZING TABLES */
+
+
+create table faculties(
+    faculty_id number(3) primary key,
+    faculty_name varchar2(50)
+)
+
+insert into faculties values(101, 'Engineering & Natural Sciences')
+insert into faculties values(102, 'Business School');
+insert into faculties values(103, 'Education & Humanities');
+insert into faculties values(104, 'Law & Social Sciences');
+
+
+create table rooms(
+    room_id number(6) primary key,
+    floor_number number(1) not null,
+    residing_club varchar2(6)
+)
+
+create table clubs(
+    club_id varchar2(6) primary key,
+    club_name varchar2(30) 
+        constraint club_name_unique unique
+        constraint club_name_nn not null,
+    club_head number(9) 
+        constraint club_head_unique unique
+        constraint club_head_nn not null,
+    club_category varchar2(20) not null,
+    members_number number(3) not null,
+    established_date date,
+    club_room number(6) 
+        constraint club_room references rooms(room_id)    
+)
+

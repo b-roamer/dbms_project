@@ -1,1 +1,1 @@
-this project is a cross-platform mobile app, made specifically to manage the clubs and club members of SDU.
+this project is a web application, made specifically to manage the clubs and club members of SDU.
