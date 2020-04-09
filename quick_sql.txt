@@ -1,33 +1,45 @@
 /* quick sql for table init */
 
-
-
-faculty /insert 4
-  faculty_name char(50) /nn
+faculties 
+  faculty_id number(1) /pk /between 1 and 4
+  faculty_name vc(50) /nn
   
-  sdu_students /insert 50
-    first_name char(30) /nn
-    last_name char(30) /nn
-    birth_date date
-    year_of_study number(1) /nn
-    
-    club_heads
-      faculty_id /fk faculty
-      club_id /fk clubs
-      
-      clubs 
-        club_name char(20) /nn
-        club_category char(20) 
-        members_number number(3) /nn
-        established_date date
-        club_room /fk rooms
-        
-        rooms 
-          floor number(1) /nn
-          
+  
+students
+  student_id number(9) /pk
+  first_name vc(20) /nn
+  last_name vc(20) /nn
+  birth_date date /nn
+  year number(1) /nn /between 1 and 4
+  faculty /fk sdu_faculties(faculty_id)
+  
+  
+heads
+  student_id /fk sdu_students(student_id)
+  first_name vc(20) /nn
+  last_name vc(20) /nn
+  faculty_id /fk sdu_faculties(faculty_id)
+  birth_date date /nn
+  
+  
+rooms
+  room_id vc(4) /pk
+  floor number(1) /between 1 and 3
+  
+  
+clubs  
+  club_id number(3) /pk
+  club_name vc(20) /nn
+  club_head /fk heads
+  club_category vc(20) /nn 
+  members_number number(3) /nn
+  date established
+  club_room /fk sdu_rooms(room_id)
+  
+  
 events
-  event_name char(50) /nn
-  event_date date /nn
-  budget number(7) /nn
-  organizing_club /fk clubs
+  event_date date
+  club_id /fk sdu_clubs(club_id)
+  budget number(9) /nn
+  
   
