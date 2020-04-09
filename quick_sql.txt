@@ -1,0 +1,33 @@
+/* quick sql for table init */
+
+
+
+faculty /insert 4
+  faculty_name char(50) /nn
+  
+  sdu_students /insert 50
+    first_name char(30) /nn
+    last_name char(30) /nn
+    birth_date date
+    year_of_study number(1) /nn
+    
+    club_heads
+      faculty_id /fk faculty
+      club_id /fk clubs
+      
+      clubs 
+        club_name char(20) /nn
+        club_category char(20) 
+        members_number number(3) /nn
+        established_date date
+        club_room /fk rooms
+        
+        rooms 
+          floor number(1) /nn
+          
+events
+  event_name char(50) /nn
+  event_date date /nn
+  budget number(7) /nn
+  organizing_club /fk clubs
+  
