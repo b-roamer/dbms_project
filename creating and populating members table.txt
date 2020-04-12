@@ -1,0 +1,4 @@
+create table sdu_mountain_kings_members
+    as (select student_id, first_name, last_name, birth_date, year, faculty 
+        from sdu_students 
+        where club = 'Mountain Kings')

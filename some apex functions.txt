@@ -1,0 +1,19 @@
+/* pie chart */
+
+select CLUB_NAME, MEMBERS_NUMBER
+from SDU_CLUBS
+where MEMBERS_NUMBER is not null
+order by 2 desc
+
+
+
+
+
+/* club info */
+
+select * from sdu_clubs where club_id = :P2_CLUB_ID
+
+
+/* displaying head's name from view */
+
+select name from sdu_head_name where id = (select club_head from sdu_clubs where club_id = :P2_CLUB_ID)
